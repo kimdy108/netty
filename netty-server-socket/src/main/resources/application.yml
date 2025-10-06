@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: netty-server-socket
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: local
+
+server:
+  port: 11080
+
+netty:
+  port: 12088
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+logging:
+  level:
+    root: error
+    com.project.netty.server.socket: debug
+    org.hibernate.resource: info
+    com.zaxxer.hikari.pool.HikariPool: debug
+    com.zaxxer.hikari: trace
+  dir: /Users/kimdy/data/workSpace/sampleData/netty/logs
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+logging:
+  level:
+    root: error
+    com.project.netty.server.socket: debug
+    org.hibernate.resource: info
+    com.zaxxer.hikari.pool.HikariPool: debug
+    com.zaxxer.hikari: trace
+  dir: /data/netty/logs
